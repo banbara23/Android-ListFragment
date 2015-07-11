@@ -35,8 +35,8 @@ public class MyProgressDialogFragment extends DialogFragment {
         //スタイルを円タイプに指定
         progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 
-        //クリアボタンでも消せない指定、個人的にかなりウザい
-        setCancelable(false);
+        //これを付けるとクリアボタンでも消せない指定、個人的にかなりウザい
+//        setCancelable(false);
 
         return progressDialog;
     }
