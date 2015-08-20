@@ -174,6 +174,10 @@ public class StoreListFragment extends ListFragment implements ListView.OnScroll
         mMyScrollListener = storeListActivity;
     }
 
+    public View getHeaderView() {
+        return mListView.getChildAt(0);
+    }
+
     public interface OnMyScrollListener {
         public void onScroll(int firstVisibleItem, int visibleItemCount, int totalItemCount);
     }

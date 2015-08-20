@@ -3,16 +3,25 @@ package com.ikmr.banbara23.listfragmentsample;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
+
+import com.konifar.fab_transformation.FabTransformation;
 
 /**
  * 一覧Activity
  */
 public class StoreListActivity extends AppCompatActivity implements StoreListAdapter.ListItemClickListener, StoreListFragment.OnMyScrollListener {
+
+    FloatingActionButton mFloatingActionButton;
+    Toolbar mToolbar;
+    StoreListFragment storeListFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,12 +30,22 @@ public class StoreListActivity extends AppCompatActivity implements StoreListAda
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         if (savedInstanceState == null) {
-            StoreListFragment storeListFragment = new StoreListFragment();
+            storeListFragment = new StoreListFragment();
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.container, storeListFragment)
                     .commit();
             storeListFragment.setOnScrollListener(this);
+
         }
+
+        mFloatingActionButton = (FloatingActionButton) findViewById(R.id.fab);
+        mFloatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FabTransformation.with(mFloatingActionButton).transformFrom(storeListFragment.getHeaderView());
+            }
+        });
+//        mToolbar = (Toolbar) findViewById(R.id.toolbar_footer);
     }
 
     /**
@@ -66,6 +85,32 @@ public class StoreListActivity extends AppCompatActivity implements StoreListAda
     @Override
     public void onScroll(int firstVisibleItem, int visibleItemCount, int totalItemCount) {
         Log.d("StoreListActivity", "firstVisibleItem:" + firstVisibleItem + " visibleItemCount:" + visibleItemCount + " totalItemCount:" + totalItemCount);
+        if (firstVisibleItem > 0) {
+            showFloatingActionButton();
+        } else {
+            hideFloatingActionButton();
+        }
+    }
+
+    private void showFloatingActionButton() {
+        if (mFloatingActionButton.getVisibility() == View.VISIBLE) {
+            return;
+        }
+        Log.d("StoreListActivity", "show");
+        View header = storeListFragment.getHeaderView();
+        FabTransformation.with(mFloatingActionButton).transformTo(header);
+    }
+
+    private void hideFloatingActionButton() {
+        if (mFloatingActionButton.getVisibility() != View.VISIBLE) {
+            return;
+        }
+        Log.d("StoreListActivity", "hide");
+        View header = storeListFragment.getHeaderView();
+        if (header == null) {
+            return;
+        }
+        FabTransformation.with(mFloatingActionButton).transformFrom(header);
     }
 
     @Override
