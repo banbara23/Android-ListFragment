@@ -1,3 +1,4 @@
+
 package com.ikmr.banbara23.listfragmentsample;
 
 import android.content.Intent;
@@ -17,7 +18,7 @@ public class TopActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_top);
 
-        //ボタン押下
+        // ボタン押下
         findViewById(R.id.activity_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

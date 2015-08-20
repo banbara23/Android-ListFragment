@@ -49,6 +49,7 @@ public class StoreListFragment extends ListFragment implements ListView.OnScroll
         View view = inflater.inflate(R.layout.fragment_list, container, false);
         mListView = (ListView) view.findViewById(android.R.id.list);
         mListView.addHeaderView(inflater.inflate(R.layout.view_first_row, null));
+        mListView.setOnScrollListener(this);
 
         return view;
     }
