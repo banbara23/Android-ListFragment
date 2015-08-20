@@ -6,6 +6,7 @@ import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 
@@ -15,11 +16,12 @@ import java.util.List;
 /**
  * 一覧フラグメント
  */
-public class StoreListFragment extends ListFragment {
+public class StoreListFragment extends ListFragment implements ListView.OnScrollListener {
 
     StoreListAdapter mListAdapter;
     ProgressBar mProgressBar;
     ListView mListView;
+    private OnMyScrollListener mMyScrollListener;
 
     /**
      * Fragmentには空コンストラクタを必ず作る
@@ -46,6 +48,8 @@ public class StoreListFragment extends ListFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_list, container, false);
         mListView = (ListView) view.findViewById(android.R.id.list);
+        mListView.addHeaderView(inflater.inflate(R.layout.view_first_row, null));
+
         return view;
     }
 
@@ -62,9 +66,9 @@ public class StoreListFragment extends ListFragment {
     private void callApi() {
         mListAdapter.clear();
 
-        //API call
+        // API call
 
-        //結果を受け取ったとして
+        // 結果を受け取ったとして
         mListAdapter.addAll(getShop());
         mListView.setVisibility(View.VISIBLE);
     }
@@ -92,8 +96,84 @@ public class StoreListFragment extends ListFragment {
         shop.setName("Third");
         shops.add(shop);
 
+        shop = new Shop();
+        shop.setId("3");
+        shop.setName("Third");
+        shops.add(shop);
+
+        shop = new Shop();
+        shop.setId("3");
+        shop.setName("Third");
+        shops.add(shop);
+
+        shop = new Shop();
+        shop.setId("3");
+        shop.setName("Third");
+        shops.add(shop);
+
+        shop = new Shop();
+        shop.setId("3");
+        shop.setName("Third");
+        shops.add(shop);
+
+        shop = new Shop();
+        shop.setId("3");
+        shop.setName("Third");
+        shops.add(shop);
+
+        shop = new Shop();
+        shop.setId("3");
+        shop.setName("Third");
+        shops.add(shop);
+
+        shop = new Shop();
+        shop.setId("3");
+        shop.setName("Third");
+        shops.add(shop);
+
+        shop = new Shop();
+        shop.setId("3");
+        shop.setName("Third");
+        shops.add(shop);
+
+        shop = new Shop();
+        shop.setId("3");
+        shop.setName("Third");
+        shops.add(shop);
+
+        shop = new Shop();
+        shop.setId("3");
+        shop.setName("Third");
+        shops.add(shop);
+
+        shop = new Shop();
+        shop.setId("3");
+        shop.setName("Third");
+        shops.add(shop);
+
+        shop = new Shop();
+        shop.setId("3");
+        shop.setName("Third");
+        shops.add(shop);
+
         return shops;
     }
 
+    @Override
+    public void onScrollStateChanged(AbsListView view, int scrollState) {
 
+    }
+
+    @Override
+    public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+        mMyScrollListener.onScroll(firstVisibleItem, visibleItemCount, totalItemCount);
+    }
+
+    public void setOnScrollListener(StoreListActivity storeListActivity) {
+        mMyScrollListener = storeListActivity;
+    }
+
+    public interface OnMyScrollListener {
+        public void onScroll(int firstVisibleItem, int visibleItemCount, int totalItemCount);
+    }
 }

@@ -1,8 +1,10 @@
+
 package com.ikmr.banbara23.listfragmentsample;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -10,7 +12,7 @@ import android.widget.Toast;
 /**
  * 一覧Activity
  */
-public class StoreListActivity extends AppCompatActivity implements StoreListAdapter.ListItemClickListener {
+public class StoreListActivity extends AppCompatActivity implements StoreListAdapter.ListItemClickListener, StoreListFragment.OnMyScrollListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +25,7 @@ public class StoreListActivity extends AppCompatActivity implements StoreListAda
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.container, storeListFragment)
                     .commit();
+            storeListFragment.setOnScrollListener(this);
         }
     }
 
@@ -58,6 +61,11 @@ public class StoreListActivity extends AppCompatActivity implements StoreListAda
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onScroll(int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+        Log.d("StoreListActivity", "firstVisibleItem:" + firstVisibleItem + " visibleItemCount:" + visibleItemCount + " totalItemCount:" + totalItemCount);
     }
 
     @Override

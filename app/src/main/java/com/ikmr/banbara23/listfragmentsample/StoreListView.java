@@ -4,6 +4,7 @@ package com.ikmr.banbara23.listfragmentsample;
 import android.content.Context;
 import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -16,6 +17,7 @@ public class StoreListView extends RelativeLayout {
     TextView mShopIdText;
     TextView mNameText;
     ImageView mPhotoImage;
+    View layout;
 
     public StoreListView(Context context) {
         super(context);
@@ -23,6 +25,7 @@ public class StoreListView extends RelativeLayout {
 
     public StoreListView(Context context, AttributeSet attrs) {
         super(context, attrs);
+//        layout = LayoutInflater.from(context).inflate(R.layout.view_store_list, this);
     }
 
     @Override
@@ -47,6 +50,9 @@ public class StoreListView extends RelativeLayout {
     }
 
     private void setShopId(String id) {
+        if (mShopIdText == null) {
+            mShopIdText = (TextView) layout.findViewById(R.id.view_store_list_id_text);
+        }
         if (TextUtils.isEmpty(id)) {
             mShopIdText.setVisibility(GONE);
             return;
@@ -60,6 +66,9 @@ public class StoreListView extends RelativeLayout {
     }
 
     private void setName(String name) {
+        if (mNameText == null) {
+            mNameText = (TextView) layout.findViewById(R.id.view_store_list_name_text);
+        }
         if (isEmpty(name)) {
             mNameText.setVisibility(GONE);
             return;
