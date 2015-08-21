@@ -21,6 +21,7 @@ public class StoreListActivity extends AppCompatActivity implements StoreListAda
 
     FloatingActionButton mFloatingActionButton;
     Toolbar mToolbar;
+    FloatingSearchView mFloatingSearchView;
     StoreListFragment storeListFragment;
 
     @Override
@@ -37,15 +38,15 @@ public class StoreListActivity extends AppCompatActivity implements StoreListAda
             storeListFragment.setOnScrollListener(this);
 
         }
-
+        mFloatingSearchView = (FloatingSearchView) findViewById(R.id.activity_floating_search);
         mFloatingActionButton = (FloatingActionButton) findViewById(R.id.fab);
         mFloatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FabTransformation.with(mFloatingActionButton).transformFrom(storeListFragment.getHeaderView());
+                Log.d("StoreListActivity", "検索");
             }
         });
-//        mToolbar = (Toolbar) findViewById(R.id.toolbar_footer);
+        // mToolbar = (Toolbar) findViewById(R.id.toolbar_footer);
     }
 
     /**
@@ -98,7 +99,7 @@ public class StoreListActivity extends AppCompatActivity implements StoreListAda
         }
         Log.d("StoreListActivity", "show");
         View header = storeListFragment.getHeaderView();
-        FabTransformation.with(mFloatingActionButton).transformTo(header);
+        FabTransformation.with(mFloatingActionButton).transformFrom(mFloatingSearchView);
     }
 
     private void hideFloatingActionButton() {
@@ -110,7 +111,7 @@ public class StoreListActivity extends AppCompatActivity implements StoreListAda
         if (header == null) {
             return;
         }
-        FabTransformation.with(mFloatingActionButton).transformFrom(header);
+        FabTransformation.with(mFloatingActionButton).transformTo(mFloatingSearchView);
     }
 
     @Override

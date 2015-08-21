@@ -18,14 +18,18 @@
         android:layout_alignParentTop="true">
 
         <!-- Transform view -->
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar_footer"
-            android:layout_width="match_parent"
-            android:layout_height="64dp"
-            android:background="#2979FF"
-            android:visibility="invisible">
-            <!-- Put view you like -->
-        </android.support.v7.widget.Toolbar>
+        <include
+            android:id="@+id/activity_floating_search"
+            layout="@layout/view_floating_search"/>
+
+        <!--<android.support.v7.widget.Toolbar-->
+        <!--android:id="@+id/toolbar_footer"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="64dp"-->
+        <!--android:background="#2979FF"-->
+        <!--android:visibility="invisible">-->
+        <!--&lt;!&ndash; Put view you like &ndash;&gt;-->
+        <!--</android.support.v7.widget.Toolbar>-->
 
     </io.codetail.widget.RevealFrameLayout>
 
@@ -34,6 +38,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@android:drawable/ic_menu_search"
+        android:visibility="gone"
         app:fabSize="normal"/>
 
 </RelativeLayout>
