@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.konifar.fab_transformation.FabTransformation;
@@ -23,6 +24,7 @@ public class StoreListActivity extends AppCompatActivity implements StoreListAda
     Toolbar mToolbar;
     FloatingSearchView mFloatingSearchView;
     StoreListFragment storeListFragment;
+    ImageView fabImg;
     boolean showFloating = false;
 
     @Override
@@ -49,14 +51,15 @@ public class StoreListActivity extends AppCompatActivity implements StoreListAda
         });
 
         // フローティングボタン
-        mFloatingActionButton = (FloatingActionButton) findViewById(R.id.fab);
-        mFloatingActionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                search();
-            }
-        });
+//        mFloatingActionButton = (FloatingActionButton) findViewById(R.id.fab);
+//        mFloatingActionButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                search();
+//            }
+//        });
         // mToolbar = (Toolbar) findViewById(R.id.toolbar_footer);
+        fabImg = (ImageView) findViewById(R.id.fab_image);
     }
 
     private void search() {
@@ -122,7 +125,7 @@ public class StoreListActivity extends AppCompatActivity implements StoreListAda
         // });
         // }
         // }).start();
-        FabTransformation.with(mFloatingActionButton).transformFrom(mFloatingSearchView);
+        FabTransformation.with(mFloatingActionButton).transformFrom(fabImg);
     }
 
     private void hideFloatingActionButton() {
@@ -140,7 +143,7 @@ public class StoreListActivity extends AppCompatActivity implements StoreListAda
         // });
         // }
         // }).start();
-        FabTransformation.with(mFloatingActionButton).transformTo(mFloatingSearchView);
+        FabTransformation.with(mFloatingActionButton).transformTo(fabImg);
     }
 
     @Override

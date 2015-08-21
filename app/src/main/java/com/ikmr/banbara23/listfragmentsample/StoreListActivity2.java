@@ -50,15 +50,15 @@ public class StoreListActivity2 extends AppCompatActivity implements StoreListAd
         });
 
         // フローティングボタン
-        mFloatingActionButton = (FloatingActionButton) findViewById(R.id.fab);
-        mFloatingActionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                search();
-            }
-        });
-        // mToolbar = (Toolbar) findViewById(R.id.toolbar_footer);
-        findViewById(R.id.activity_floating_search).setVisibility(View.GONE);
+//        mFloatingActionButton = (FloatingActionButton) findViewById(R.id.fab);
+//        mFloatingActionButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                search();
+//            }
+//        });
+//        // mToolbar = (Toolbar) findViewById(R.id.toolbar_footer);
+//        findViewById(R.id.activity_floating_search).setVisibility(View.GONE);
     }
 
     private void search() {
@@ -148,7 +148,7 @@ public class StoreListActivity2 extends AppCompatActivity implements StoreListAd
         scale.setDuration(duration); // 3000msかけてアニメーションする
         // shoAnim.addAnimation(scale);
 
-        mFloatingActionButton.startAnimation(showAnim);
+//        mFloatingActionButton.startAnimation(showAnim);
     }
 
     private void hideFloatingActionButton() {
@@ -157,8 +157,6 @@ public class StoreListActivity2 extends AppCompatActivity implements StoreListAd
         }
         Log.d("StoreListActivity", "hide");
         showFloating = false;
-        float x = mFloatingActionButton.getTranslationX();
-        float y = mFloatingActionButton.getTranslationY();
 
         // fromX, toX, fromY, toY
         TranslateAnimation moveUp = new TranslateAnimation(0, 400, 0, -300);
@@ -179,7 +177,7 @@ public class StoreListActivity2 extends AppCompatActivity implements StoreListAd
             public void onAnimationRepeat(android.view.animation.Animation animation) {
             }
         });
-        mFloatingActionButton.startAnimation(moveUp);
+//        mFloatingActionButton.startAnimation(moveUp);
     }
 
     @Override

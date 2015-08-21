@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--フローティングボタン-->
+    <color name="material_blue_500">#00000000</color>
+    <color name="material_blue_600">#00000000</color>
+    <color name="primary">#008675</color>
+    <color name="primary_pressed">#00000000</color>
+    <color name="ripple">#008675</color>
+    <color name="accent">#00000000</color>
+    <color name="accent_pressed">#00000000</color>
+
+    <color name="ColorPrimary">#008675</color>
+    <color name="ColorPrimaryDark">#008675</color>
+</resources>
