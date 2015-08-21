@@ -35,10 +35,11 @@
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
+        style="@style/floating_action_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@android:drawable/ic_menu_search"
-        android:visibility="gone"
+        android:visibility="invisible"
         app:fabSize="normal"/>
 
 </RelativeLayout>
