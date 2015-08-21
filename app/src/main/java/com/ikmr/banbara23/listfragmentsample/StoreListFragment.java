@@ -1,6 +1,7 @@
 
 package com.ikmr.banbara23.listfragmentsample;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
@@ -48,7 +49,7 @@ public class StoreListFragment extends ListFragment implements ListView.OnScroll
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_list, container, false);
         mListView = (ListView) view.findViewById(android.R.id.list);
-        mListView.addHeaderView(inflater.inflate(R.layout.view_first_row, null));
+        mListView.addHeaderView(inflater.inflate(R.layout.view_floating_search, null));
         mListView.setOnScrollListener(this);
 
         return view;
@@ -170,12 +171,8 @@ public class StoreListFragment extends ListFragment implements ListView.OnScroll
         mMyScrollListener.onScroll(firstVisibleItem, visibleItemCount, totalItemCount);
     }
 
-    public void setOnScrollListener(StoreListActivity storeListActivity) {
-        mMyScrollListener = storeListActivity;
-    }
-
-    public View getHeaderView() {
-        return mListView.getChildAt(0);
+    public void setOnScrollListener(Activity activity) {
+        mMyScrollListener = (OnMyScrollListener) activity;
     }
 
     public interface OnMyScrollListener {

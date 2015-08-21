@@ -26,9 +26,9 @@
         <!--android:id="@+id/toolbar_footer"-->
         <!--android:layout_width="match_parent"-->
         <!--android:layout_height="64dp"-->
-        <!--android:background="#2979FF"-->
-        <!--android:visibility="invisible">-->
-        <!--&lt;!&ndash; Put view you like &ndash;&gt;-->
+        <!--android:background="#008675"-->
+        <!-->-->
+        <!-- Put view you like -->
         <!--</android.support.v7.widget.Toolbar>-->
 
     </io.codetail.widget.RevealFrameLayout>

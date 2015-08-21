@@ -10,14 +10,15 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.AnimationSet;
+import android.view.animation.ScaleAnimation;
+import android.view.animation.TranslateAnimation;
 import android.widget.Toast;
-
-import com.konifar.fab_transformation.FabTransformation;
 
 /**
  * 一覧Activity
  */
-public class StoreListActivity extends AppCompatActivity implements StoreListAdapter.ListItemClickListener, StoreListFragment.OnMyScrollListener {
+public class StoreListActivity2 extends AppCompatActivity implements StoreListAdapter.ListItemClickListener, StoreListFragment.OnMyScrollListener {
 
     FloatingActionButton mFloatingActionButton;
     Toolbar mToolbar;
@@ -57,6 +58,7 @@ public class StoreListActivity extends AppCompatActivity implements StoreListAda
             }
         });
         // mToolbar = (Toolbar) findViewById(R.id.toolbar_footer);
+        findViewById(R.id.activity_floating_search).setVisibility(View.GONE);
     }
 
     private void search() {
@@ -99,7 +101,9 @@ public class StoreListActivity extends AppCompatActivity implements StoreListAda
 
     @Override
     public void onScroll(int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-        Log.d("StoreListActivity", "firstVisibleItem:" + firstVisibleItem + " visibleItemCount:" + visibleItemCount + " totalItemCount:" + totalItemCount);
+        // Log.d("StoreListActivity", "firstVisibleItem:" + firstVisibleItem + "
+        // visibleItemCount:" + visibleItemCount + " totalItemCount:" +
+        // totalItemCount);
         if (firstVisibleItem > 0) {
             showFloatingActionButton();
         } else {
@@ -107,22 +111,44 @@ public class StoreListActivity extends AppCompatActivity implements StoreListAda
         }
     }
 
+    int duration = 500;
+
     private void showFloatingActionButton() {
         if (showFloating) {
             return;
         }
         Log.d("StoreListActivity", "show");
         showFloating = true;
-        // new Thread(new Runnable() {
-        // public void run() {
-        // runOnUiThread(new Runnable() {
-        // public void run() {
-        // FabTransformation.with(mFloatingActionButton).transformFrom(mFloatingSearchView);
-        // }
-        // });
-        // }
-        // }).start();
-        FabTransformation.with(mFloatingActionButton).transformFrom(mFloatingSearchView);
+
+        // AnimationSetを使いアニメーションを設定
+        AnimationSet showAnim = new AnimationSet(false);
+
+        // fromX, toX, fromY, toY
+        TranslateAnimation moveDown = new TranslateAnimation(400, 0, -300, 0);
+        moveDown.setDuration(duration);
+        moveDown.setFillAfter(true);
+        moveDown.setAnimationListener(new android.view.animation.Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(android.view.animation.Animation animation) {
+            }
+
+            @Override
+            public void onAnimationEnd(android.view.animation.Animation animation) {
+                mFloatingActionButton.setVisibility(View.VISIBLE);
+                mFloatingActionButton.setAnimation(null);
+            }
+
+            @Override
+            public void onAnimationRepeat(android.view.animation.Animation animation) {
+            }
+        });
+        showAnim.addAnimation(moveDown);
+        // 開始横幅, 終了横幅, 開始縦幅, 終了横幅
+        ScaleAnimation scale = new ScaleAnimation(0.1f, 1f, 0.1f, 1f); //
+        scale.setDuration(duration); // 3000msかけてアニメーションする
+        // shoAnim.addAnimation(scale);
+
+        mFloatingActionButton.startAnimation(showAnim);
     }
 
     private void hideFloatingActionButton() {
@@ -131,16 +157,29 @@ public class StoreListActivity extends AppCompatActivity implements StoreListAda
         }
         Log.d("StoreListActivity", "hide");
         showFloating = false;
-        // new Thread(new Runnable() {
-        // public void run() {
-        // runOnUiThread(new Runnable() {
-        // public void run() {
-        // FabTransformation.with(mFloatingActionButton).transformTo(mFloatingSearchView);
-        // }
-        // });
-        // }
-        // }).start();
-        FabTransformation.with(mFloatingActionButton).transformTo(mFloatingSearchView);
+        float x = mFloatingActionButton.getTranslationX();
+        float y = mFloatingActionButton.getTranslationY();
+
+        // fromX, toX, fromY, toY
+        TranslateAnimation moveUp = new TranslateAnimation(0, 400, 0, -300);
+
+        moveUp.setDuration(duration);
+        moveUp.setFillAfter(false);
+        moveUp.setAnimationListener(new android.view.animation.Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(android.view.animation.Animation animation) {
+            }
+
+            @Override
+            public void onAnimationEnd(android.view.animation.Animation animation) {
+                mFloatingActionButton.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void onAnimationRepeat(android.view.animation.Animation animation) {
+            }
+        });
+        mFloatingActionButton.startAnimation(moveUp);
     }
 
     @Override
