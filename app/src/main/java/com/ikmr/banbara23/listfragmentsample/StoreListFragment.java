@@ -33,7 +33,8 @@ public class StoreListFragment extends ListFragment implements ListView.OnScroll
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mListAdapter = new StoreListAdapter(getActivity().getApplicationContext(), new ArrayList<Shop>(), getActivity());
+        mListAdapter = new StoreListAdapter(getActivity().getApplicationContext(),
+                new ArrayList<Shop>(), getActivity());
         setListAdapter(mListAdapter);
     }
 
@@ -49,7 +50,7 @@ public class StoreListFragment extends ListFragment implements ListView.OnScroll
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_list, container, false);
         mListView = (ListView) view.findViewById(android.R.id.list);
-        mListView.addHeaderView(inflater.inflate(R.layout.view_floating_search, null));
+        mListView.addHeaderView(inflater.inflate(R.layout.view_first_row, null));
         mListView.setOnScrollListener(this);
 
         return view;
@@ -167,7 +168,8 @@ public class StoreListFragment extends ListFragment implements ListView.OnScroll
     }
 
     @Override
-    public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+    public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount,
+            int totalItemCount) {
         mMyScrollListener.onScroll(firstVisibleItem, visibleItemCount, totalItemCount);
     }
 

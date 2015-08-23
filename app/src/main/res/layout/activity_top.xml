@@ -32,4 +32,12 @@
         android:layout_below="@+id/activity_button"
         android:text="listへ遷移2"/>
 
+    <!--<Button-->
+        <!--android:id="@+id/activity_button3"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentLeft="true"-->
+        <!--android:layout_alignParentStart="true"-->
+        <!--android:layout_below="@+id/activity_button2"-->
+        <!--android:text="listへ遷移3"/>-->
 </RelativeLayout>

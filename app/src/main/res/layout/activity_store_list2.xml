@@ -13,14 +13,14 @@
     <io.codetail.widget.RevealFrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true">
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginTop="18dp">
 
         <!-- Transform view -->
         <include
-            android:id="@+id/activity_floating_search"
-            layout="@layout/view_floating_search"/>
+            android:id="@+id/activity_floating_search2"
+            layout="@layout/view_floating_search2"/>
 
         <!--<android.support.v7.widget.Toolbar-->
         <!--android:id="@+id/toolbar_footer"-->
@@ -34,7 +34,7 @@
     </io.codetail.widget.RevealFrameLayout>
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
+        android:id="@+id/fab2"
         style="@style/floating_action_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

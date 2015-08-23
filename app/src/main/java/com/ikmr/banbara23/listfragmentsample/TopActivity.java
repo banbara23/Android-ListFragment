@@ -33,6 +33,14 @@ public class TopActivity extends ActionBarActivity {
                 goList2();
             }
         });
+        // ボタン3 押下
+        // findViewById(R.id.activity_button3).setOnClickListener(new
+        // View.OnClickListener() {
+        // @Override
+        // public void onClick(View view) {
+        // goList3();
+        // }
+        // });
     }
 
     /**
@@ -48,6 +56,11 @@ public class TopActivity extends ActionBarActivity {
      */
     private void goList2() {
         Intent intent = new Intent(this, StoreListActivity2.class);
+        startActivity(intent);
+    }
+
+    private void goList3() {
+        Intent intent = new Intent(this, StoreListActivity3.class);
         startActivity(intent);
     }
 

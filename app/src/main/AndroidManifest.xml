@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="com.ikmr.banbara23.listfragmentsample"
-          xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest
+    package="com.ikmr.banbara23.listfragmentsample"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application
         android:allowBackup="true"
@@ -22,7 +23,10 @@
             android:label="一覧"/>
         <activity
             android:name=".StoreListActivity2"
-            android:label="一覧"/>
+            android:label="一覧 2"/>
+        <activity
+            android:name=".StoreListActivity3"
+            android:label="一覧 3"/>
         <activity
             android:name=".StoreDetailActivity"
             android:label="詳細"/>
