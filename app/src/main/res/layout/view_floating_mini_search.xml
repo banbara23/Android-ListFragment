@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.ikmr.banbara23.listfragmentsample.FloatingMiniSearchView xmlns:android="http://schemas.android.com/apk/res/android"
+                                                              android:layout_width="wrap_content"
+                                                              android:layout_height="wrap_content"
+                                                              android:background="#008675"
+                                                              android:orientation="vertical"
+                                                              android:padding="10dp">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@android:drawable/ic_menu_search"
+        />
+</com.ikmr.banbara23.listfragmentsample.FloatingMiniSearchView>

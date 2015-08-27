@@ -1,11 +1,13 @@
 
 package com.ikmr.banbara23.listfragmentsample;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 
@@ -15,11 +17,13 @@ import java.util.List;
 /**
  * 一覧フラグメント
  */
-public class StoreListFragment extends ListFragment {
+public class StoreListFragment extends ListFragment implements ListView.OnScrollListener {
 
     StoreListAdapter mListAdapter;
     ProgressBar mProgressBar;
     ListView mListView;
+    private OnMyScrollListener mMyScrollListener;
+    boolean initFlag = true;
 
     /**
      * Fragmentには空コンストラクタを必ず作る
@@ -46,6 +50,7 @@ public class StoreListFragment extends ListFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_list, container, false);
         mListView = (ListView) view.findViewById(android.R.id.list);
+        mListView.setOnScrollListener(this);
         return view;
     }
 
@@ -144,5 +149,21 @@ public class StoreListFragment extends ListFragment {
         return shops;
     }
 
+    @Override
+    public void onScrollStateChanged(AbsListView view, int scrollState) {
 
+    }
+
+    @Override
+    public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+        mMyScrollListener.onScroll(firstVisibleItem, visibleItemCount, totalItemCount);
+    }
+
+    public void setOnScrollListener(Activity activity) {
+        mMyScrollListener = (OnMyScrollListener) activity;
+    }
+
+    public interface OnMyScrollListener {
+        public void onScroll(int firstVisibleItem, int visibleItemCount, int totalItemCount);
+    }
 }

@@ -1,12 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
     <FrameLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
-</LinearLayout>
+    <include
+        android:id="@+id/fragment_floating_search"
+        layout="@layout/view_floating_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/fragment_mini_floating_search"
+        android:layout_alignTop="@+id/fragment_mini_floating_search"
+        android:layout_marginRight="20dp"
+        android:layout_toEndOf="@+id/fragment_mini_floating_search"
+        android:layout_toRightOf="@+id/fragment_mini_floating_search"/>
+
+    <include
+        android:id="@+id/fragment_mini_floating_search"
+        layout="@layout/view_floating_mini_search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="-1dp"
+        android:layout_marginTop="20dp"/>
+
+
+</RelativeLayout>
