@@ -75,7 +75,7 @@ public class StoreListFragment extends ListFragment {
      * @return
      */
     private List<Shop> getShop() {
-        List<Shop> shops = new ArrayList<>();
+        List<Shop> shops = new ArrayList<Shop>();
         Shop shop = new Shop();
 
         shop.setId("1");

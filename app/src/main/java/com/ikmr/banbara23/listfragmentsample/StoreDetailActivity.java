@@ -2,14 +2,14 @@
 package com.ikmr.banbara23.listfragmentsample;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
 /**
  * 詳細アクティビティ
  */
-public class StoreDetailActivity extends AppCompatActivity {
+public class StoreDetailActivity extends ActionBarActivity {
     public static final String KEY_STORE_CODE = "key_store_code";
 
     @Override

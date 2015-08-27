@@ -2,7 +2,7 @@ package com.ikmr.banbara23.listfragmentsample;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -10,7 +10,7 @@ import android.widget.Toast;
 /**
  * 一覧Activity
  */
-public class StoreListActivity extends AppCompatActivity implements StoreListAdapter.ListItemClickListener {
+public class StoreListActivity extends ActionBarActivity implements StoreListAdapter.ListItemClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
