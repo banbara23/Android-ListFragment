@@ -34,13 +34,12 @@ public class TopActivity extends ActionBarActivity {
             }
         });
         // ボタン3 押下
-        // findViewById(R.id.activity_button3).setOnClickListener(new
-        // View.OnClickListener() {
-        // @Override
-        // public void onClick(View view) {
-        // goList3();
-        // }
-        // });
+        findViewById(R.id.activity_button3).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goList3();
+            }
+        });
     }
 
     /**
