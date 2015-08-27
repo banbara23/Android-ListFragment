@@ -92,6 +92,55 @@ public class StoreListFragment extends ListFragment {
         shop.setName("Third");
         shops.add(shop);
 
+        shop = new Shop();
+        shop.setId("3");
+        shop.setName("Third");
+        shops.add(shop);
+        shop = new Shop();
+        shop.setId("3");
+        shop.setName("Third");
+        shops.add(shop);
+        shop = new Shop();
+        shop.setId("3");
+        shop.setName("Third");
+        shops.add(shop);
+        shop = new Shop();
+        shop.setId("3");
+        shop.setName("Third");
+        shops.add(shop);
+        shop = new Shop();
+        shop.setId("3");
+        shop.setName("Third");
+        shops.add(shop);
+        shop = new Shop();
+        shop.setId("3");
+        shop.setName("Third");
+        shops.add(shop);
+        shop = new Shop();
+        shop.setId("3");
+        shop.setName("Third");
+        shops.add(shop);
+        shop = new Shop();
+        shop.setId("3");
+        shop.setName("Third");
+        shops.add(shop);
+        shop = new Shop();
+        shop.setId("3");
+        shop.setName("Third");
+        shops.add(shop);
+        shop = new Shop();
+        shop.setId("3");
+        shop.setName("Third");
+        shops.add(shop);
+        shop = new Shop();
+        shop.setId("3");
+        shop.setName("Third");
+        shops.add(shop);
+        shop = new Shop();
+        shop.setId("3");
+        shop.setName("Third");
+        shops.add(shop);
+
         return shops;
     }
 
