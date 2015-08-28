@@ -2,7 +2,7 @@
 <com.ikmr.banbara23.listfragmentsample.FloatingMiniSearchView xmlns:android="http://schemas.android.com/apk/res/android"
                                                               android:layout_width="wrap_content"
                                                               android:layout_height="wrap_content"
-                                                              android:background="#008675"
+                                                              android:background="@drawable/corner_round"
                                                               android:orientation="vertical"
                                                               android:padding="10dp">
 

@@ -26,7 +26,7 @@ import android.widget.Toast;
 public class StoreListActivity extends ActionBarActivity implements StoreListAdapter.ListItemClickListener, StoreListFragment.OnMyScrollListener {
 
     boolean showFloating = true;
-    int DURATION = 300;
+    int DURATION = 200;
     FloatingMiniSearchView mMiniSearchView;
     FloatingSearchView mSearchView;
 

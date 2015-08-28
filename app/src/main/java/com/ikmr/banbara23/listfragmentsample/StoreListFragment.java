@@ -55,6 +55,14 @@ public class StoreListFragment extends ListFragment implements ListView.OnScroll
     }
 
     @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        if (initFlag) {
+            initFlag = false;
+        }
+    }
+
+    @Override
     public void onResume() {
         super.onResume();
 
@@ -156,6 +164,9 @@ public class StoreListFragment extends ListFragment implements ListView.OnScroll
 
     @Override
     public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+        if (initFlag) {
+            return;
+        }
         mMyScrollListener.onScroll(firstVisibleItem, visibleItemCount, totalItemCount);
     }
 
