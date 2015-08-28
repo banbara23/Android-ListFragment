@@ -55,14 +55,6 @@ public class StoreListFragment extends ListFragment implements ListView.OnScroll
     }
 
     @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        if (initFlag) {
-            initFlag = false;
-        }
-    }
-
-    @Override
     public void onResume() {
         super.onResume();
 
@@ -89,84 +81,31 @@ public class StoreListFragment extends ListFragment implements ListView.OnScroll
      */
     private List<Shop> getShop() {
         List<Shop> shops = new ArrayList<Shop>();
-        Shop shop = new Shop();
+        Shop shop;
 
-        shop.setId("1");
-        shop.setName("first");
-        shops.add(shop);
-
-        shop = new Shop();
-        shop.setId("2");
-        shop.setName("second");
-        shops.add(shop);
-
-        shop = new Shop();
-        shop.setId("3");
-        shop.setName("Third");
-        shops.add(shop);
-
-        shop = new Shop();
-        shop.setId("3");
-        shop.setName("Third");
-        shops.add(shop);
-        shop = new Shop();
-        shop.setId("3");
-        shop.setName("Third");
-        shops.add(shop);
-        shop = new Shop();
-        shop.setId("3");
-        shop.setName("Third");
-        shops.add(shop);
-        shop = new Shop();
-        shop.setId("3");
-        shop.setName("Third");
-        shops.add(shop);
-        shop = new Shop();
-        shop.setId("3");
-        shop.setName("Third");
-        shops.add(shop);
-        shop = new Shop();
-        shop.setId("3");
-        shop.setName("Third");
-        shops.add(shop);
-        shop = new Shop();
-        shop.setId("3");
-        shop.setName("Third");
-        shops.add(shop);
-        shop = new Shop();
-        shop.setId("3");
-        shop.setName("Third");
-        shops.add(shop);
-        shop = new Shop();
-        shop.setId("3");
-        shop.setName("Third");
-        shops.add(shop);
-        shop = new Shop();
-        shop.setId("3");
-        shop.setName("Third");
-        shops.add(shop);
-        shop = new Shop();
-        shop.setId("3");
-        shop.setName("Third");
-        shops.add(shop);
-        shop = new Shop();
-        shop.setId("3");
-        shop.setName("Third");
-        shops.add(shop);
+        for (int i = 1; i < 15; i++) {
+            shop = new Shop();
+            shop.setId(String.valueOf(i));
+            shop.setName("label");
+            shops.add(shop);
+        }
 
         return shops;
     }
 
     @Override
     public void onScrollStateChanged(AbsListView view, int scrollState) {
-
+//        Log.d("StoreListFragment", "scrollState:" + scrollState);
+//        if (initFlag && scrollState > 0) {
+//            initFlag = false;
+//        }
     }
 
     @Override
     public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-        if (initFlag) {
-            return;
-        }
+//        if (initFlag) {
+//            return;
+//        }
         mMyScrollListener.onScroll(firstVisibleItem, visibleItemCount, totalItemCount);
     }
 

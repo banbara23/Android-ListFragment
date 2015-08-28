@@ -27,7 +27,7 @@ import android.widget.Toast;
 public class StoreListActivity extends ActionBarActivity implements StoreListAdapter.ListItemClickListener, StoreListFragment.OnMyScrollListener {
 
     boolean showFloating = true;
-    int DURATION = 200;
+    int DURATION = 150;
 //    FloatingSearchView mFloatingSearchView;
 
     @Override
@@ -109,6 +109,7 @@ public class StoreListActivity extends ActionBarActivity implements StoreListAda
         showFloating = true;
 //        mFloatingSearchView.startShowAnimation();
         openAnimation();
+        editTextShowAnimationStart();
     }
 
     /**
@@ -127,7 +128,7 @@ public class StoreListActivity extends ActionBarActivity implements StoreListAda
 
             @Override
             public void onAnimationEnd(Animation animation) {
-                editTextShowAnimationStart();
+
             }
 
             @Override
@@ -176,6 +177,7 @@ public class StoreListActivity extends ActionBarActivity implements StoreListAda
         Log.d("StoreListActivity", "hide");
         showFloating = false;
         hideAnimation();
+        backViewHideAnimationStart();
     }
 
     private void hideAnimation() {
@@ -194,7 +196,6 @@ public class StoreListActivity extends ActionBarActivity implements StoreListAda
             @Override
             public void onAnimationEnd(Animation animation) {
                 editText.setVisibility(View.GONE);
-                backViewHideAnimationStart();
             }
 
             @Override

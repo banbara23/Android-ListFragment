@@ -30,16 +30,19 @@
             android:id="@+id/activity_search_corner_round_large"
             android:layout_width="52dp"
             android:layout_height="52dp"
-            android:background="@drawable/corner_round_large"/>
+            android:background="@drawable/corner_round_large"
+            android:visibility="gone"/>
 
         <EditText
             android:id="@+id/activity_search_edit_text"
+
             android:layout_width="match_parent"
             android:layout_height="52dp"
             android:layout_marginLeft="21dp"
             android:background="@drawable/corner_round_large"
             android:hint="検索文字を入力"
-            android:paddingLeft="30dp"/>
+            android:paddingLeft="30dp"
+            android:visibility="gone"/>
 
 
         <ImageView
