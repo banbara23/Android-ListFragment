@@ -1,14 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.ikmr.banbara23.listfragmentsample.FloatingSearchView xmlns:android="http://schemas.android.com/apk/res/android"
-                                                          android:layout_width="match_parent"
-                                                          android:layout_height="wrap_content"
-                                                          android:gravity="center_vertical"
-                                                          android:orientation="horizontal">
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:gravity="center_vertical"
+             android:orientation="horizontal">
 
+    <View
+        android:id="@+id/view_search_corner_round_large"
+        android:layout_width="wrap_content"
+        android:layout_height="52dp"
+        android:background="@drawable/corner_round_large"/>
 
     <EditText
-        android:id="@+id/search_edit_text"
+        android:id="@+id/view_search_edit_text"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="52dp"
+        android:layout_marginLeft="25dp"
+        android:background="@drawable/corner_round_large"
+        android:paddingLeft="50dp"/>
 
-</com.ikmr.banbara23.listfragmentsample.FloatingSearchView>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="52dp"
+        android:background="@drawable/corner_round"
+        android:padding="10dp"
+        android:src="@android:drawable/ic_menu_search"/>
+
+</FrameLayout>

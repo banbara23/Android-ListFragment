@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.ScaleAnimation;
+import android.widget.EditText;
 import android.widget.Toast;
 
 /**
@@ -27,8 +28,7 @@ public class StoreListActivity extends ActionBarActivity implements StoreListAda
 
     boolean showFloating = true;
     int DURATION = 200;
-    FloatingMiniSearchView mMiniSearchView;
-    FloatingSearchView mSearchView;
+//    FloatingSearchView mFloatingSearchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,8 +43,14 @@ public class StoreListActivity extends ActionBarActivity implements StoreListAda
                     .commit();
             storeListFragment.setOnScrollListener(this);
         }
-        mMiniSearchView = (FloatingMiniSearchView) findViewById(R.id.fragment_mini_floating_search);
-        mSearchView = (FloatingSearchView) findViewById(R.id.fragment_floating_search);
+        //検索アイコン
+        findViewById(R.id.activity_search_icon).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(StoreListActivity.this, "検索", Toast.LENGTH_SHORT).show();
+            }
+        });
+//        mFloatingSearchView = (FloatingSearchView) findViewById(R.id.fragment_floating_search);
     }
 
     /**
@@ -89,25 +95,53 @@ public class StoreListActivity extends ActionBarActivity implements StoreListAda
     @Override
     public void onScroll(int firstVisibleItem, int visibleItemCount, int totalItemCount) {
         if (firstVisibleItem > 0) {
-            showFloatingActionButton();
+            openFloatingSearch();
         } else {
-            hideFloatingActionButton();
+            closeFloatingSearch();
         }
     }
 
-    private void showFloatingActionButton() {
+    private void openFloatingSearch() {
         if (showFloating) {
-            return;
-        }
-        if (mSearchView.getVisibility() == View.VISIBLE) {
             return;
         }
         Log.d("StoreListActivity", "show");
         showFloating = true;
-        showAnimation();
+//        mFloatingSearchView.startShowAnimation();
+        openAnimation();
     }
 
-    private void showAnimation() {
+    /**
+     * 開くアニメーション
+     */
+    private void openAnimation() {
+        final View backView = findViewById(R.id.activity_search_corner_round_large);
+        // 開始横幅, 終了横幅, 開始縦幅, 終了横幅;
+        ScaleAnimation anim = new ScaleAnimation(0.0f, 1.0f, 0.0f, 1.0f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+        anim.setDuration(DURATION);
+        anim.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+                backView.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                editTextShowAnimationStart();
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
+        backView.startAnimation(anim);
+
+    }
+
+    private void editTextShowAnimationStart() {
+
+        final EditText editText = (EditText) findViewById(R.id.activity_search_edit_text);
         // 開始横幅, 終了横幅, 開始縦幅, 終了横幅;
         // ABSOLUTE：原点
         // Animation.RELATIVE_TO_SELF :相対的
@@ -116,7 +150,7 @@ public class StoreListActivity extends ActionBarActivity implements StoreListAda
         anim.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {
-                mSearchView.setVisibility(View.VISIBLE);
+                editText.setVisibility(View.VISIBLE);
             }
 
             @Override
@@ -129,15 +163,14 @@ public class StoreListActivity extends ActionBarActivity implements StoreListAda
 
             }
         });
-        mSearchView.startAnimation(anim);
-
+        editText.startAnimation(anim);
     }
 
-    private void hideFloatingActionButton() {
+    /**
+     * 閉じるアニメーション
+     */
+    private void closeFloatingSearch() {
         if (!showFloating) {
-            return;
-        }
-        if (mSearchView.getVisibility() == View.GONE) {
             return;
         }
         Log.d("StoreListActivity", "hide");
@@ -146,6 +179,7 @@ public class StoreListActivity extends ActionBarActivity implements StoreListAda
     }
 
     private void hideAnimation() {
+        final EditText editText = (EditText) findViewById(R.id.activity_search_edit_text);
         // 開始横幅, 終了横幅, 開始縦幅, 終了横幅;
         // ABSOLUTE：原点
         // Animation.RELATIVE_TO_SELF :相対的
@@ -159,7 +193,8 @@ public class StoreListActivity extends ActionBarActivity implements StoreListAda
 
             @Override
             public void onAnimationEnd(Animation animation) {
-                mSearchView.setVisibility(View.GONE);
+                editText.setVisibility(View.GONE);
+                backViewHideAnimationStart();
             }
 
             @Override
@@ -167,6 +202,30 @@ public class StoreListActivity extends ActionBarActivity implements StoreListAda
 
             }
         });
-        mSearchView.startAnimation(anim);
+        editText.startAnimation(anim);
+    }
+
+    private void backViewHideAnimationStart() {
+        final View backView = findViewById(R.id.activity_search_corner_round_large);
+        // 開始横幅, 終了横幅, 開始縦幅, 終了横幅;
+        ScaleAnimation anim = new ScaleAnimation(1.0f, 0.0f, 1.0f, 0.0f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+        anim.setDuration(DURATION);
+        anim.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+//                backView.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                backView.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
+        backView.startAnimation(anim);
     }
 }
