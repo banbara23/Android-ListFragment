@@ -12,7 +12,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
-        android:orientation="horizontal"
         android:padding="10dp">
 
         <View
@@ -24,7 +23,6 @@
 
         <EditText
             android:id="@+id/activity_search_edit_text"
-
             android:layout_width="match_parent"
             android:layout_height="52dp"
             android:layout_marginLeft="21dp"
@@ -32,7 +30,6 @@
             android:hint="検索文字を入力"
             android:paddingLeft="30dp"
             android:visibility="gone"/>
-
 
         <ImageView
             android:id="@+id/activity_search_icon"
