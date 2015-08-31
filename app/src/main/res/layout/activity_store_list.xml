@@ -8,23 +8,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
-    <!--<include-->
-    <!--android:id="@+id/fragment_floating_search"-->
-    <!--layout="@layout/view_floating_search"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="52dp"/>-->
-
-    <!--<com.ikmr.banbara23.listfragmentsample.FloatingSearchView-->
-    <!--android:id="@+id/fragment_floating_search"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content"/>-->
-
-    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                 android:layout_width="match_parent"
-                 android:layout_height="wrap_content"
-                 android:gravity="center_vertical"
-                 android:orientation="horizontal"
-                 android:padding="10dp">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="10dp">
 
         <View
             android:id="@+id/activity_search_corner_round_large"

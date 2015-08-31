@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.ListView;
-import android.widget.ProgressBar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,10 +19,9 @@ import java.util.List;
 public class StoreListFragment extends ListFragment implements ListView.OnScrollListener {
 
     StoreListAdapter mListAdapter;
-    ProgressBar mProgressBar;
     ListView mListView;
     private OnMyScrollListener mMyScrollListener;
-    boolean initFlag = true;
+//    boolean initFlag = true;
 
     /**
      * Fragmentには空コンストラクタを必ず作る
@@ -75,7 +73,7 @@ public class StoreListFragment extends ListFragment implements ListView.OnScroll
     }
 
     /**
-     * 結果を作成
+     * テストデータ作成
      *
      * @return
      */
@@ -96,16 +94,10 @@ public class StoreListFragment extends ListFragment implements ListView.OnScroll
     @Override
     public void onScrollStateChanged(AbsListView view, int scrollState) {
 //        Log.d("StoreListFragment", "scrollState:" + scrollState);
-//        if (initFlag && scrollState > 0) {
-//            initFlag = false;
-//        }
     }
 
     @Override
     public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-//        if (initFlag) {
-//            return;
-//        }
         mMyScrollListener.onScroll(firstVisibleItem, visibleItemCount, totalItemCount);
     }
 
@@ -114,6 +106,6 @@ public class StoreListFragment extends ListFragment implements ListView.OnScroll
     }
 
     public interface OnMyScrollListener {
-        public void onScroll(int firstVisibleItem, int visibleItemCount, int totalItemCount);
+        void onScroll(int firstVisibleItem, int visibleItemCount, int totalItemCount);
     }
 }

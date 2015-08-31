@@ -14,21 +14,11 @@ import android.widget.Toast;
 
 /**
  * 一覧Activity
- * <p/>
- * 縮小アニメーションのお手本
- * https://github.com/2359media/EasyAndroidAnimations/blob/48741f599ce6090d81138c9d4423fca115340176/Library/src/com/easyandroidanimations/library/ScaleOutAnimation.java
- * <p/>
- * 丸角の情報
- * http://asky.sakura.ne.jp/wp/2015/05/17/051702/
- * <p/>
- * Morphアニメーションのお手本
- * https://github.com/ozodrukh/CircularReveal/tree/master/circualreveal/src/main/java/io/codetail/animation
  */
 public class StoreListActivity extends ActionBarActivity implements StoreListAdapter.ListItemClickListener, StoreListFragment.OnMyScrollListener {
 
     boolean showFloating = true;
     int DURATION = 150;
-//    FloatingSearchView mFloatingSearchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +40,6 @@ public class StoreListActivity extends ActionBarActivity implements StoreListAda
                 Toast.makeText(StoreListActivity.this, "検索", Toast.LENGTH_SHORT).show();
             }
         });
-//        mFloatingSearchView = (FloatingSearchView) findViewById(R.id.fragment_floating_search);
     }
 
     /**
@@ -101,46 +90,23 @@ public class StoreListActivity extends ActionBarActivity implements StoreListAda
         }
     }
 
+    /**
+     * フローティング検索を開く
+     */
     private void openFloatingSearch() {
         if (showFloating) {
             return;
         }
         Log.d("StoreListActivity", "show");
         showFloating = true;
-//        mFloatingSearchView.startShowAnimation();
-        openAnimation();
-        editTextShowAnimationStart();
+        openTextAnimation();
+        openIconBackAnimation();
     }
 
     /**
-     * 開くアニメーション
+     * 開くアニメーション EditText
      */
-    private void openAnimation() {
-        final View backView = findViewById(R.id.activity_search_corner_round_large);
-        // 開始横幅, 終了横幅, 開始縦幅, 終了横幅;
-        ScaleAnimation anim = new ScaleAnimation(0.0f, 1.0f, 0.0f, 1.0f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
-        anim.setDuration(DURATION);
-        anim.setAnimationListener(new Animation.AnimationListener() {
-            @Override
-            public void onAnimationStart(Animation animation) {
-                backView.setVisibility(View.VISIBLE);
-            }
-
-            @Override
-            public void onAnimationEnd(Animation animation) {
-
-            }
-
-            @Override
-            public void onAnimationRepeat(Animation animation) {
-
-            }
-        });
-        backView.startAnimation(anim);
-
-    }
-
-    private void editTextShowAnimationStart() {
+    private void openTextAnimation() {
 
         final EditText editText = (EditText) findViewById(R.id.activity_search_edit_text);
         // 開始横幅, 終了横幅, 開始縦幅, 終了横幅;
@@ -168,7 +134,34 @@ public class StoreListActivity extends ActionBarActivity implements StoreListAda
     }
 
     /**
-     * 閉じるアニメーション
+     * 開くアニメーション Icon背景
+     */
+    private void openIconBackAnimation() {
+        final View iconBackView = findViewById(R.id.activity_search_corner_round_large);
+        // 開始横幅, 終了横幅, 開始縦幅, 終了横幅;
+        ScaleAnimation anim = new ScaleAnimation(0.0f, 1.0f, 0.0f, 1.0f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+        anim.setDuration(DURATION);
+        anim.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+                iconBackView.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
+        iconBackView.startAnimation(anim);
+    }
+
+    /**
+     * フローティング検索を閉じる
      */
     private void closeFloatingSearch() {
         if (!showFloating) {
@@ -176,11 +169,14 @@ public class StoreListActivity extends ActionBarActivity implements StoreListAda
         }
         Log.d("StoreListActivity", "hide");
         showFloating = false;
-        hideAnimation();
-        backViewHideAnimationStart();
+        closeTextAnimation();
+        closeIconBackAnimation();
     }
 
-    private void hideAnimation() {
+    /**
+     * 閉じるアニメーション EditText
+     */
+    private void closeTextAnimation() {
         final EditText editText = (EditText) findViewById(R.id.activity_search_edit_text);
         // 開始横幅, 終了横幅, 開始縦幅, 終了横幅;
         // ABSOLUTE：原点
@@ -206,20 +202,23 @@ public class StoreListActivity extends ActionBarActivity implements StoreListAda
         editText.startAnimation(anim);
     }
 
-    private void backViewHideAnimationStart() {
-        final View backView = findViewById(R.id.activity_search_corner_round_large);
+    /**
+     * 閉じるアニメーション Icon背景
+     */
+    private void closeIconBackAnimation() {
+        final View iconBackView = findViewById(R.id.activity_search_corner_round_large);
         // 開始横幅, 終了横幅, 開始縦幅, 終了横幅;
         ScaleAnimation anim = new ScaleAnimation(1.0f, 0.0f, 1.0f, 0.0f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
         anim.setDuration(DURATION);
         anim.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {
-//                backView.setVisibility(View.VISIBLE);
+
             }
 
             @Override
             public void onAnimationEnd(Animation animation) {
-                backView.setVisibility(View.GONE);
+                iconBackView.setVisibility(View.GONE);
             }
 
             @Override
@@ -227,6 +226,6 @@ public class StoreListActivity extends ActionBarActivity implements StoreListAda
 
             }
         });
-        backView.startAnimation(anim);
+        iconBackView.startAnimation(anim);
     }
 }
